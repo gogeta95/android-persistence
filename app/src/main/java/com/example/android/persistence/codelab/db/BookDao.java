@@ -60,6 +60,13 @@ public interface BookDao {
     public List<Book> findBooksBorrowedByNameSync(String userName);
 
     @Query("SELECT * FROM Book " +
+            "INNER JOIN Loan ON Loan.book_id = Book.id " +
+            "INNER JOIN User on User.id = Loan.user_id " +
+            "WHERE User.name LIKE :userName"
+    )
+    public LiveData<List<Book>> findBooksBorrowedByNameSyncLive(String userName);
+
+    @Query("SELECT * FROM Book " +
             "INNER JOIN Loan ON Loan.book_id LIKE Book.id " +
             "WHERE Loan.user_id LIKE :userId "
     )

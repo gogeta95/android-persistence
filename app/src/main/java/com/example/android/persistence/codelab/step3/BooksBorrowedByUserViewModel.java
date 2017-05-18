@@ -37,8 +37,7 @@ public class BooksBorrowedByUserViewModel extends AndroidViewModel {
         super(application);
         createDb();
 
-        // TODO: Assign books to the 'findBooksBorrowedByName' query.
-        books = null;
+        books = mDb.bookModel().findBooksBorrowedByNameSyncLive("Mike");
     }
 
     public void createDb() {

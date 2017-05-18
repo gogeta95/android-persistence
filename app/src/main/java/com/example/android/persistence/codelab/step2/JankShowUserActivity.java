@@ -58,7 +58,7 @@ public class JankShowUserActivity extends LifecycleActivity {
     }
 
     private void populateDb() {
-        DatabaseInitializer.populateSync(mDb);
+        DatabaseInitializer.populateAsync(mDb);
     }
 
     private void fetchData() {
